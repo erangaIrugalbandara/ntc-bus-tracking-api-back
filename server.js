@@ -51,8 +51,7 @@ app.options('*', cors());
 // Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Swagger documentation
+ 
 // Swagger documentation
 const openapiPath = path.join(__dirname, 'docs', 'openapi.yaml');
 try {
@@ -111,6 +110,10 @@ app.get('/health', (req, res) => {
     websocket: 'enabled',
     cors: 'enabled'
   });
+});
+
+app.get('/', (req, res) => {
+  res.redirect('/docs');
 });
 
 // API routes
